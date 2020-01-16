@@ -1,14 +1,17 @@
-import axios from 'axios';
-
 export const chatApi = {
+  /**
+   * フレンドのオンライン状態購読
+   * @param {string} friendID フレンドID
+   * @param {function} handleStatusChange オンライン状態更新関数
+   */
   subscribeToFriendStatus(friendID, handleStatusChange) {
     console.log('!!!!! subscribeToFriendStatus !!!!!');
-    handleStatusChange({ isOnline: true });
-    // return axios.get('http://www.mocky.io/v2/5e1c65213200002b00228540');
+    // サンプルなのでここではオンライン状態を強制true
+    handleStatusChange({ id: friendID, isOnline: true });
   },
   unsubscribeFromFriendStatus(friendID, handleStatusChange) {
     console.log('!!!!! unsubscribeToFriendStatus !!!!!');
-    handleStatusChange({ isOnline: false });
-    // return axios.get('http://www.mocky.io/v2/5e1c65213200002b00228540');
+    // サンプルなのでここではオンライン状態を強制false
+    handleStatusChange({ id: friendID, isOnline: false });
   },
 }
