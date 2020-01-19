@@ -6,8 +6,9 @@ export const chatApi = {
    */
   subscribeToFriendStatus(friendID, handleStatusChange) {
     console.log('!!!!! subscribeToFriendStatus !!!!!');
-    // サンプルなのでここではオンライン状態を強制true
-    handleStatusChange({ id: friendID, isOnline: true });
+    // サンプルなので値は適当
+    const isOnline = friendID !== 1;
+    handleStatusChange({ id: friendID, isOnline });
   },
   unsubscribeFromFriendStatus(friendID, handleStatusChange) {
     console.log('!!!!! unsubscribeToFriendStatus !!!!!');
