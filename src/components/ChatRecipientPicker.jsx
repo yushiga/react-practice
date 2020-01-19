@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { useFriendStatus } from '../modules/friend';
+import React, { useReducer } from 'react';
+import { useFriendStatus, getFiendStatusReducer } from '../modules/friend';
 
 const friendList = [
   { id: 1, name: 'Phoebe' },
@@ -8,7 +8,7 @@ const friendList = [
 ];
 
 const ChatRecipientPicker = () => {
-  const [recipientId, setRecipientId] = useState(1);
+  const [recipientId, dispatch] = useReducer(getFiendStatusReducer, 1);
   const isRecipientOnline = useFriendStatus(recipientId);
 
   return (
@@ -16,7 +16,7 @@ const ChatRecipientPicker = () => {
       <li style={{ color: isRecipientOnline ? 'green' : 'black' }}></li>
       <select
         value={recipientId}
-        onChange={e => setRecipientId(Number(e.target.value))}
+        onChange={e => dispatch({ type: 'GET_STATUS', data: Number(e.target.value) })}
       >
         {friendList.map(friend => (
           <option key={friend.id} value={friend.id}>

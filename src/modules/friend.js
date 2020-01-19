@@ -1,6 +1,15 @@
 import { useState, useEffect } from 'react';
 import { chatApi } from '../apis/ChatAPI';
 
+export const getFiendStatusReducer = (state, action) => {
+  switch(action.type) {
+    case 'GET_STATUS':
+      return action.data;
+    default:
+      return state;
+  }
+}
+
 /**
  * フレンドのオンライン状態を更新するカスタムフック
  * @param {string*} friendID フレンドID
